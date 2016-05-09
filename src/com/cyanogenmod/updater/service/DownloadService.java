@@ -95,7 +95,9 @@ public class DownloadService extends IntentService
     }
 
     private UpdatesJsonObjectRequest buildRequest(String sourceIncremental) {
-        URI requestUri = URI.create(getServerUri());
+    	String deviceType = Utils.getDeviceType();
+        URI requestUri = URI.create(getServerUri() + deviceType + ".json");
+        Log.d(TAG, requestUri);
         UpdatesJsonObjectRequest request;
 
         // Set request body
